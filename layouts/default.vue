@@ -1,41 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-      color="#005882"
-    >
-      <v-container>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-        <v-toolbar-title v-text="title" />
-        <v-spacer />
-      </v-container>
-    </v-app-bar>
+    <base-header />
     <v-content>
       <v-container>
         <nuxt />
@@ -46,18 +11,7 @@
       :right="right"
       temporary
       fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    />
     <v-footer
       :fixed="fixed"
       app
@@ -68,11 +22,14 @@
 </template>
 
 <script>
+import BaseHeader from '~/components/BaseHeader.vue'
+
 export default {
+  components: {
+    BaseHeader
+  },
   data() {
     return {
-      clipped: true,
-      drawer: false,
       fixed: false,
       items: [
         {
@@ -89,7 +46,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'thorn in my side'
+      title: 'thorn in my side',
+      query: ''
     }
   }
 }
