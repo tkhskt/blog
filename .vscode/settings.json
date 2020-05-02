@@ -1,0 +1,9 @@
+{
+  "vetur.format.defaultFormatter.css": "none",
+  "vetur.format.defaultFormatter.html": "eslint",
+  "vetur.format.defaultFormatter.js": "eslint",
+  "vetur.format.defaultFormatter.less": "none",
+  "vetur.format.defaultFormatter.postcss": "none",
+  "vetur.format.defaultFormatter.stylus": "none",
+  "vetur.format.defaultFormatter.ts": "eslint"
+}
