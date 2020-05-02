@@ -3,13 +3,13 @@
     :clipped-left="clipped"
     fixed
     app
-    color="#005882"
+    color="primary"
   >
     <v-container>
       <v-toolbar
-        color="#005882"
+        color="primary"
         flat
-        dark=""
+        dark
       >
         <v-spacer />
         <v-toolbar-title v-text="title" />
@@ -25,7 +25,7 @@
         <v-spacer />
       </v-toolbar>
     </v-container>
-    <v-btn>LOGIN</v-btn>
+    <v-btn to="/new">LOGIN</v-btn>
   </v-app-bar>
 </template>
 
