@@ -3,30 +3,10 @@
     <v-spacer />
     <v-row>
       <v-col cols="6">
-        <v-form ref="form">
-          <v-text-field
-            v-model="title"
-            label="Title"
-          />
-        </v-form>
-        <v-textarea
-          v-model="content"
-          auto-grow="true"
-        />
+        <Editor />
       </v-col>
       <v-col cols="6">
-        <v-sheet
-          :elevation="6"
-          min-height="100%"
-          class="pa-8"
-          max-width="100%"
-        >
-          <h1>{{ title }}</h1>
-          <v-text
-            class="mt-10"
-            v-html="compiledMarkdown"
-          />
-        </v-sheet>
+        <Article />
       </v-col>
     </v-row>
     <v-spacer />
@@ -34,19 +14,19 @@
 </template>
 <script>
 
-import marked from 'marked'
+import Article from '~/components/Article.vue'
+import Editor from '~/components/Editor.vue'
 
 export default {
+  components: {
+    Article,
+    Editor
+  },
   data() {
     return {
       fluid: true,
       title: '',
       content: '## subtitle'
-    }
-  },
-  computed: {
-    compiledMarkdown() {
-      return marked(this.content, { sanitize: true })
     }
   }
 }
