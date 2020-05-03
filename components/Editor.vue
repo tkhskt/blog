@@ -38,11 +38,14 @@
       </template>
     </v-combobox>
     <v-textarea
-      auto-grow
       label="Content"
-      class="pb-10"
       @input="changeContent($event)"
     />
+    <v-btn
+      class="post-btn"
+      color="secondary"
+      @click="post"
+    >POST</v-btn>
   </div>
 </template>
 <script>
@@ -75,7 +78,16 @@ export default {
     },
     changeContent(e) {
       this.$store.dispatch('article/updateArticle', { title: this.title, content: e })
+    },
+    post() {
+      this.$store.dispatch('article/post', {})
     }
   }
 }
 </script>
+<style scoped>
+.post-btn {
+  display: block;
+  margin: auto;
+}
+</style>

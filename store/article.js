@@ -1,3 +1,5 @@
+import firebase from '~/plugins/firebase.js'
+
 export const state = () => ({
   title: 'Title',
   content: '## content',
@@ -11,6 +13,19 @@ export const actions = {
   },
   updateTags({ commit }, value) {
     commit('setTags', value)
+  },
+  post({ commit, state }, value) {
+    const db = firebase.firestore()
+    db.collection('article')
+      .add({
+        title: state.title,
+        content: state.content,
+        tags: state.tags,
+        date: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then((doc) => {
+        console.log(doc)
+      })
   }
 }
 
