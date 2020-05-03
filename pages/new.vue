@@ -1,15 +1,17 @@
 <template>
   <v-content>
     <v-spacer />
-    <v-row>
-      <v-col cols="6">
-        <Editor />
-      </v-col>
-      <v-col cols="6">
-        <Article />
-      </v-col>
-    </v-row>
-    <v-spacer />
+    <v-container>
+      <v-row>
+        <v-col cols="6">
+          <Editor />
+        </v-col>
+        <v-col cols="6">
+          <Article />
+        </v-col>
+      </v-row>
+      <v-spacer />
+    </v-container>
   </v-content>
 </template>
 <script>
