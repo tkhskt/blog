@@ -14,9 +14,11 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "core-js": "2.6.9",
     "firebase": "^7.14.2",
     "lodash": "^4.17.15",
     "marked": "^1.0.0",
+    "moment": "^2.25.1",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {

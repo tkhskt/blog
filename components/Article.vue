@@ -5,6 +5,7 @@
     class="pa-8"
     max-width="100%"
   >
+    <p class="date">{{ date | formatDate }}</p>
     <h1>{{ title }}</h1>
     <v-chip
       v-for="(tag, index) in tags"
@@ -23,12 +24,21 @@
 </template>
 <script>
 import marked from 'marked'
+import moment from 'moment'
 import { mapState } from 'vuex'
 
 export default {
   name: 'Article',
+  filters: {
+    formatDate(date) {
+      if (date === '') {
+        return date
+      }
+      return moment(date).format('YYYY/MM/DD')
+    }
+  },
   computed: {
-    ...mapState('article', ['title', 'content', 'tags']),
+    ...mapState('article', ['title', 'content', 'tags', 'date']),
     compiledMarkdown() {
       return marked(this.content, { sanitize: true })
     }
@@ -36,7 +46,12 @@ export default {
 }
 </script>
 <style scoped>
+p.date{
+  color: #757575;
+  font-weight: bold;
+}
 h1 {
+  margin-top: 32px;
   margin-bottom: 8px;
   font-size: 40px;
   font-weight: normal;
