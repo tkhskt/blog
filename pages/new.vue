@@ -24,12 +24,8 @@ export default {
     Article,
     Editor
   },
-  data() {
-    return {
-      fluid: true,
-      title: '',
-      content: '## subtitle'
-    }
+  created() {
+    this.$store.dispatch('article/init', null)
   }
 }
 </script>
