@@ -48,7 +48,9 @@ export default {
   },
   watch: {
     loggedIn(value) {
-      this.$router.push('/new')
+      if (value) {
+        this.$router.push('/new')
+      }
     }
   },
   methods: {

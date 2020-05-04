@@ -11,8 +11,14 @@ export const actions = {
       .auth()
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result.user)
-        commit('setLoggedIn', true)
+        firebase
+          .auth()
+          .currentUser.getIdTokenResult()
+          .then((result) => {
+            if (result.claims.admin) {
+              commit('setLoggedIn', true)
+            }
+          })
       })
       .catch((error) => {
         console.error(error)
