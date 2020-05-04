@@ -2,13 +2,13 @@
   <div>
     <v-form ref="form">
       <v-text-field
+        v-model="titleValue"
         label="Title"
-        @input="changeTitle($event)"
       />
     </v-form>
     <v-combobox
       v-model="selectedTags"
-      :items="tags"
+      :items="tagCandidates"
       :search-input.sync="search"
       hide-selected
       hint="Maximum of 5 tags"
@@ -38,14 +38,16 @@
       </template>
     </v-combobox>
     <v-textarea
+      v-model="contentValue"
       label="Content"
-      @input="changeContent($event)"
     />
     <v-btn
       class="post-btn"
       color="secondary"
       @click="post"
-    >POST</v-btn>
+    >
+      POST
+    </v-btn>
   </div>
 </template>
 <script>
@@ -55,30 +57,44 @@ export default {
   name: 'Editor',
   data() {
     return {
-      selectedTags: [],
-      tags: ['kotlin', 'android', 'java', 'fun'],
+      t: [],
+      tagCandidates: ['kotlin', 'android', 'java', 'fun'],
       search: null
     }
   },
   computed: {
-    ...mapState('article', ['title', 'content'])
-  },
-  watch: {
-    selectedTags(val) {
-      if (val.length > 5) {
-        this.$nextTick(() => this.selectedTags.pop())
+    ...mapState('article', ['title', 'content', 'tags']),
+    contentValue: {
+      get() {
+        return this.content
+      },
+      set(value) {
+        this.$store.dispatch('article/updateArticle', { title: this.title, content: value })
       }
-      this.search = null
-      this.$store.dispatch('article/updateTags', this.selectedTags)
+    },
+    titleValue: {
+      get() {
+        return this.title
+      },
+      set(value) {
+        this.$store.dispatch('article/updateArticle', { title: value, content: this.content })
+      }
+    },
+    selectedTags: {
+      get() {
+        return this.tags
+      },
+      set(value) {
+        this.search = null
+        if (value.length > 5) {
+          value.pop()
+          return
+        }
+        this.$store.dispatch('article/updateTags', value)
+      }
     }
   },
   methods: {
-    changeTitle(e) {
-      this.$store.dispatch('article/updateArticle', { title: e, content: this.content })
-    },
-    changeContent(e) {
-      this.$store.dispatch('article/updateArticle', { title: this.title, content: e })
-    },
     post() {
       this.$store.dispatch('article/post', {})
     }
