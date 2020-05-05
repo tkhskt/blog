@@ -12,7 +12,14 @@
         dark
       >
         <v-spacer />
-        <v-toolbar-title v-text="title" />
+        <v-toolbar-title>
+          <router-link
+            class="logo"
+            to="/"
+          >
+            thorn in my side
+          </router-link>
+        </v-toolbar-title>
         <v-spacer />
         <v-spacer />
         <v-spacer />
@@ -25,7 +32,12 @@
         <v-spacer />
       </v-toolbar>
     </v-container>
-    <v-btn @click.stop="login">
+    <v-btn
+      class="btn"
+      text
+      color="white"
+      @click.stop="login"
+    >
       LOGIN
     </v-btn>
   </v-app-bar>
@@ -39,7 +51,6 @@ export default {
   data() {
     return {
       clipped: true,
-      title: 'thorn in my side',
       query: ''
     }
   },
@@ -56,8 +67,18 @@ export default {
   },
   methods: {
     login() {
+      if (this.loggedIn != null && this.loggedIn) {
+        this.$router.push('/new')
+        return
+      }
       this.$store.dispatch('user/login', null)
     }
   }
 }
 </script>
+<style scoped>
+.logo {
+  color: inherit;
+  text-decoration: inherit;
+}
+</style>
