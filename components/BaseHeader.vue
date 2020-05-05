@@ -25,7 +25,7 @@
         <v-spacer />
       </v-toolbar>
     </v-container>
-    <v-btn @click="login">
+    <v-btn @click.stop="login">
       LOGIN
     </v-btn>
   </v-app-bar>
@@ -48,6 +48,7 @@ export default {
   },
   watch: {
     loggedIn(value) {
+      if (value == null) { return }
       if (value) {
         this.$router.push('/new')
       }

@@ -5,6 +5,7 @@
       <v-container>
         <nuxt />
       </v-container>
+      <login-failed-dialog />
     </v-content>
     <v-navigation-drawer
       v-model="rightDrawer"
@@ -17,10 +18,12 @@
 
 <script>
 import BaseHeader from '~/components/BaseHeader.vue'
+import LoginFailedDialog from '~/components/LoginFailedDialog.vue'
 
 export default {
   components: {
-    BaseHeader
+    BaseHeader,
+    LoginFailedDialog
   },
   data() {
     return {
