@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 export const state = () => ({
-  loggedIn: false
+  loggedIn: null
 })
 
 export const actions = {
@@ -17,13 +17,18 @@ export const actions = {
           .then((result) => {
             if (result.claims.admin) {
               commit('setLoggedIn', true)
+              return
             }
+            commit('setLoggedIn', false)
           })
       })
       .catch((error) => {
         console.error(error)
         commit('setLoggedIn', false)
       })
+  },
+  initLogin({ commit }, value) {
+    commit('setLoggedIn', null)
   }
 }
 
