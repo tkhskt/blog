@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       t: [],
-      tagCandidates: ['kotlin', 'android', 'java', 'fun'],
+      tagCandidates: ['Kotlin', 'Android', 'Python', 'Django', 'firebase', 'Vue.js', 'JavaScript'],
       search: null
     }
   },
