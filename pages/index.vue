@@ -16,22 +16,10 @@
         <template v-for="(article, index) in articles">
           <v-col
             :key="index"
-            cols="3"
-          >
-            <v-spacer />
-          </v-col>
-          <v-col
-            :key="index"
-            cols="6"
+            cols="8"
           >
             <v-spacer />
             <article-card v-bind="article" />
-          </v-col>
-          <v-col
-            :key="index"
-            cols="3"
-          >
-            <v-spacer />
           </v-col>
         </template>
       </v-row>

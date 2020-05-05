@@ -7,7 +7,7 @@
     <v-img
       :src="img"
       class="black--text align-end"
-      height="220px"
+      height="270px"
     />
 
     <v-card-subtitle class="pb-0">
