@@ -27,14 +27,14 @@ export default {
   components: {
     Article
   },
-  computed: {
-    ...mapState('network', ['loading'])
-  },
   data() {
     return {
       align: 'center',
       justify: 'center'
     }
+  },
+  computed: {
+    ...mapState('network', ['loading'])
   },
   created() {
     const id = this.$route.params.id

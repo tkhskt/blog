@@ -25,11 +25,15 @@
         <v-spacer />
       </v-toolbar>
     </v-container>
-    <v-btn to="/new">LOGIN</v-btn>
+    <v-btn @click="login">
+      LOGIN
+    </v-btn>
   </v-app-bar>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'BaseHeader',
   data() {
@@ -37,6 +41,21 @@ export default {
       clipped: true,
       title: 'thorn in my side',
       query: ''
+    }
+  },
+  computed: {
+    ...mapState('user', ['loggedIn'])
+  },
+  watch: {
+    loggedIn(value) {
+      if (value) {
+        this.$router.push('/new')
+      }
+    }
+  },
+  methods: {
+    login() {
+      this.$store.dispatch('user/login', null)
     }
   }
 }
