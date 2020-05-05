@@ -16,7 +16,7 @@
         <template v-for="(article, index) in articles">
           <v-col
             :key="index"
-            cols="8"
+            cols="10"
           >
             <v-spacer />
             <article-card v-bind="article" />

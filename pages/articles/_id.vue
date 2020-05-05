@@ -5,7 +5,7 @@
         :align="align"
         :justify="justify"
       >
-        <v-col cols="8">
+        <v-col cols="10">
           <Article v-if="!loading" />
           <v-progress-circular
             v-if="loading"
