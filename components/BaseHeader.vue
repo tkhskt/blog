@@ -11,7 +11,7 @@
         flat
         dark
       >
-        <v-spacer />
+        <v-spacer v-if="btnAppear" />
         <v-toolbar-title>
           <router-link
             class="logo"
@@ -24,6 +24,7 @@
         <v-spacer />
         <v-spacer />
         <v-text-field
+          v-if="btnAppear"
           v-model="query"
           class="mt-4"
           flat
@@ -33,6 +34,7 @@
       </v-toolbar>
     </v-container>
     <v-btn
+      v-show="btnAppear"
       class="btn"
       text
       color="white"
@@ -51,7 +53,8 @@ export default {
   data() {
     return {
       clipped: true,
-      query: ''
+      query: '',
+      btnAppear: true
     }
   },
   computed: {
@@ -63,6 +66,15 @@ export default {
       if (value) {
         this.$router.push('/new')
       }
+    }
+  },
+  created() {
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs':
+        this.btnAppear = false
+        break
+      case 'sm':
+        this.btnAppear = false
     }
   },
   methods: {

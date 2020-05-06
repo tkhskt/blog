@@ -5,7 +5,7 @@
         :align="align"
         :justify="justify"
       >
-        <v-col cols="8">
+        <v-col :cols="cols">
           <Article v-if="!loading" />
           <v-progress-circular
             v-if="loading"
@@ -30,7 +30,8 @@ export default {
   data() {
     return {
       align: 'center',
-      justify: 'center'
+      justify: 'center',
+      cols: '10'
     }
   },
   computed: {
@@ -39,6 +40,13 @@ export default {
   created() {
     const id = this.$route.params.id
     this.$store.dispatch('article/getArticle', id)
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs':
+        this.cols = '12'
+        break
+      case 'sm':
+        this.cols = '12'
+    }
   }
 }
 </script>

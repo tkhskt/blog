@@ -1,11 +1,13 @@
 <template>
   <v-sheet
-    :elevation="6"
+    :elevation="elevation"
     min-height="100%"
-    class="pa-8"
+    :class="pa"
     max-width="100%"
   >
-    <p class="date">{{ date | formatDate }}</p>
+    <p class="date">
+      {{ date | formatDate }}
+    </p>
     <h1>{{ title }}</h1>
     <v-chip
       v-for="(tag, index) in tags"
@@ -37,10 +39,27 @@ export default {
       return moment(date).format('YYYY/MM/DD')
     }
   },
+  data() {
+    return {
+      elevation: 6,
+      pa: 'pa-8'
+    }
+  },
   computed: {
     ...mapState('article', ['title', 'content', 'tags', 'date']),
     compiledMarkdown() {
       return marked(this.content, { sanitize: true })
+    }
+  },
+  created() {
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs':
+        this.elevation = 0
+        this.pa = 'pa-0'
+        break
+      case 'sm':
+        this.elevation = 0
+        this.pa = 'pa-0'
     }
   }
 }

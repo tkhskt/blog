@@ -16,22 +16,10 @@
         <template v-for="(article, index) in articles">
           <v-col
             :key="index"
-            cols="3"
-          >
-            <v-spacer />
-          </v-col>
-          <v-col
-            :key="index"
-            cols="6"
+            :cols="cols"
           >
             <v-spacer />
             <article-card v-bind="article" />
-          </v-col>
-          <v-col
-            :key="index"
-            cols="3"
-          >
-            <v-spacer />
           </v-col>
         </template>
       </v-row>
@@ -49,7 +37,8 @@ export default {
   data() {
     return {
       align: 'center',
-      justify: 'center'
+      justify: 'center',
+      cols: '10'
     }
   },
   computed: {
@@ -58,6 +47,13 @@ export default {
   },
   created() {
     this.$store.dispatch('article/getArticles', null)
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs':
+        this.cols = '12'
+        break
+      case 'sm':
+        this.cols = '12'
+    }
   }
 }
 </script>
