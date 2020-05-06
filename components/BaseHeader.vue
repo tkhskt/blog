@@ -33,6 +33,7 @@
       </v-toolbar>
     </v-container>
     <v-btn
+      v-show="btnAppear"
       class="btn"
       text
       color="white"
@@ -51,7 +52,8 @@ export default {
   data() {
     return {
       clipped: true,
-      query: ''
+      query: '',
+      btnAppear: true
     }
   },
   computed: {
@@ -63,6 +65,15 @@ export default {
       if (value) {
         this.$router.push('/new')
       }
+    }
+  },
+  created() {
+    switch (this.$vuetify.breakpoint.name) {
+      case 'xs':
+        this.btnAppear = false
+        break
+      case 'sm':
+        this.btnAppear = false
     }
   },
   methods: {
