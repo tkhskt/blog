@@ -11,7 +11,7 @@
         flat
         dark
       >
-        <v-spacer />
+        <v-spacer v-if="btnAppear" />
         <v-toolbar-title>
           <router-link
             class="logo"
@@ -24,6 +24,7 @@
         <v-spacer />
         <v-spacer />
         <v-text-field
+          v-if="btnAppear"
           v-model="query"
           class="mt-4"
           flat
