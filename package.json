@@ -17,7 +17,7 @@
     "core-js": "2.6.9",
     "firebase": "^7.14.2",
     "firebase-admin": "^8.11.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "marked": "^1.0.0",
     "moment": "^2.25.1",
     "nuxt": "^2.0.0"
