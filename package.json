@@ -19,7 +19,7 @@
     "firebase-admin": "^8.11.0",
     "lodash": "^4.17.15",
     "marked": "^1.0.0",
-    "moment": "^2.25.1",
+    "moment": "^2.29.4",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
